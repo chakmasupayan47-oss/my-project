@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Home Page</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Poppins, sans-serif;
+            background: linear-gradient(135deg, #1f1c2c, #928dab);
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            color: #fff;
+            font-size: 18px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+        }
+
+        nav a {
+            color: white;
+            margin-left: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #00eaff;
+            transform: scale(1.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            color: white;
+            padding: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            margin: 0;
+            animation: slideDown 2s ease-in-out;
+        }
+
+        .hero p {
+            font-size: 20px;
+            opacity: 0.9;
+            margin-top: 15px;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 14px 35px;
+            background: #00eaff;
+            color: #000;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.4s;
+            animation: popUp 2s ease-in-out;
+        }
+
+        .btn:hover {
+            background: #fff;
+            transform: scale(1.1);
+        }
+
+        /* Floating animation elements */
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            animation: float 6s infinite ease-in-out;
+        }
+
+        .c1 { width: 120px; height: 120px; top: 20%; left: 10%; }
+        .c2 { width: 80px; height: 80px; top: 60%; right: 15%; }
+        .c3 { width: 100px; height: 100px; bottom: 10%; left: 40%; }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes popUp {
+            0% { transform: scale(0.7); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-25px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div><strong>Cancer Prediction</strong></div>
+        <div>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('register_page') }}">Sign Up</a>
+            <a href="{{ url_for('main_page') }}">Login</a>
+            <a href="{{ url_for('admin') }}">Admin</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div>
+            <h1>Welcome to Here</h1>
+            <p>Helth is very important for life</p>
+            <p>How Can I help you</p>
+            <a href="{{ url_for('register_page') }}" class="btn">Get Started</a>
+            <a href="{{ url_for('chat_page') }}" class="btn">Chat With Me</a>
+        </div>
+    </div>
+
+    <!-- Floating decorative circles -->
+    <div class="circle c1"></div>
+    <div class="circle c2"></div>
+    <div class="circle c3"></div>
+
+</body>
+</html>

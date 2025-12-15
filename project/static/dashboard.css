@@ -1,0 +1,80 @@
+body {
+    font-family: Arial;
+    background: #f3f3f3;
+    background-image: url("../static/image/bg.jpg");  /* ছবির নাম */
+    margin: 0;
+    padding: 0;
+    background-size: cover;        /* পুরো স্ক্রিন কভার করবে */
+    background-repeat: no-repeat;  /* রিপিট হবে না */
+    background-position: center;   /* মাঝখানে থাকবে */
+    background-attachment: fixed;  /* স্ক্রল করলেও ব্যাকগ্রাউন্ড ফিক্সড */
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 400px;
+    margin: 80px auto;
+    padding: 25px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #aaa;
+}
+
+h2 {
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    color: white;
+    background: #0073ff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0055cc;
+}
+        /* Simple Navbar */
+.navbar {
+    width: 100%;
+    background: none;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;    /* top-right corner */
+    top: 10px;
+    right: 20px;
+    gap: 20px;
+    }
+
+.navbar a {
+            color: green;
+            margin-left: 20px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+.navbar a:hover {
+            color: #00c3ff;
+        }

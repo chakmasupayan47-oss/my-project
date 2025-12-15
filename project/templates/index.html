@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cancer Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+
+<div class="Con">
+
+<h2>Cancer Prediction Form</h2>
+
+<form action="{{ url_for('result_page') }}" method="POST" class="form-grid">
+
+    <!-- Patient ID -->
+    <div class="form-item">
+        <label>Patient ID</label>
+        <input type="number" name="Patient_ID" placeholder="Patient ID" required>
+    </div>
+
+    <!-- Age -->
+    <div class="form-item">
+        <label>Age</label>
+        <input type="number" name="Age" step="0.1" placeholder="Age" required>
+    </div>
+
+    <!-- Gender -->
+    <div class="form-item">
+        <label>Gender</label>
+        <select name="Gender" required>
+            <option value="">Select Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+        </select>
+    </div>
+
+    <!-- Smoking -->
+    <div class="form-item">
+        <label>Smoking</label>
+        <select name="Smoking" required>
+            <option value="">Select Status</option>
+            <option>Current Smoker</option>
+            <option>Former Smoker</option>
+            <option>Never Smoked</option>
+        </select>
+    </div>
+
+    <!-- Alcohol -->
+    <div class="form-item">
+        <label>Alcohol Use</label>
+        <select name="Alcohol_Use" required>
+            <option value="">Select</option>
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+    </div>
+
+    <!-- Obesity -->
+    <div class="form-item">
+        <label>Obesity</label>
+        <select name="Obesity" required>
+            <option value="">Select</option>
+            <option>Obese</option>
+            <option>Overweight</option>
+            <option>Normal</option>
+        </select>
+    </div>
+
+    <!-- Family History -->
+    <div class="form-item">
+        <label>Family History</label>
+        <select name="Family_History" required>
+            <option value="">Select</option>
+            <option>Present</option>
+            <option>Absent</option>
+        </select>
+    </div>
+
+    <!-- Diet -->
+    <div class="form-item">
+        <label>Diet Red Meat</label>
+        <select name="Diet_Red_Meat" required>
+            <option value="">Select</option>
+            <option>High</option>
+            <option>Moderate</option>
+            <option>Low</option>
+        </select>
+    </div>
+
+    <div class="form-item">
+        <label>Diet Salted Processed</label>
+        <select name="Diet_Salted_Processed" required>
+            <option value="">Select</option>
+            <option>High</option>
+            <option>Moderate</option>
+            <option>Low</option>
+        </select>
+    </div>
+
+    <div class="form-item">
+        <label>Fruit Veg Intake</label>
+        <select name="Fruit_Veg_Intake" required>
+            <option value="">Select</option>
+            <option>High</option>
+            <option>Moderate</option>
+            <option>Low</option>
+        </select>
+    </div>
+
+    <!-- Physical Activity -->
+    <div class="form-item">
+        <label>Physical Activity</label>
+        <select name="Physical_Activity" required>
+            <option value="">Select</option>
+            <option>High</option>
+            <option>Moderate</option>
+            <option>Low</option>
+        </select>
+    </div>
+
+    <!-- Air Pollution -->
+    <div class="form-item">
+        <label>Air Pollution</label>
+        <select name="Air_Pollution" required>
+            <option value="">Select</option>
+            <option>High</option>
+            <option>Moderate</option>
+            <option>Low</option>
+        </select>
+    </div>
+
+    <!-- Occupational Hazards -->
+    <div class="form-item">
+        <label>Occupational Hazards</label>
+        <select name="Occupational_Hazards" required>
+            <option value="">Select</option>
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+    </div>
+
+    <!-- BRCA -->
+    <div class="form-item">
+        <label>BRCA Mutation</label>
+        <select name="BRCA_Mutation" required>
+            <option value="">Select</option>
+            <option>Positive</option>
+            <option>Negative</option>
+        </select>
+    </div>
+
+    <!-- H Pylori -->
+    <div class="form-item">
+        <label>H Pylori Infection</label>
+        <select name="H_Pylori_Infection" required>
+            <option value="">Select</option>
+            <option>Positive</option>
+            <option>Negative</option>
+        </select>
+    </div>
+
+    <!-- Calcium -->
+    <div class="form-item">
+        <label>Calcium Intake</label>
+        <select name="Calcium_Intake" required>
+            <option value="">Select</option>
+            <option>High</option>
+            <option>Moderate</option>
+            <option>Low</option>
+        </select>
+    </div>
+
+    <!-- BMI -->
+    <div class="form-item">
+        <label>BMI</label>
+        <input type="number" name="BMI" step="0.01" placeholder="BMI" required>
+    </div>
+
+    <!-- PAL -->
+    <div class="form-item">
+        <label>Physical Activity Level</label>
+        <select name="Physical_Activity_Level" required>
+            <option value="">Select</option>
+            <option>High</option>
+            <option>Moderate</option>
+            <option>Low</option>
+        </select>
+    </div>
+
+        <!-- Risk Level -->
+    <!--<div class="form-item">
+        <label>Risk Level</label>
+        <select name="Risk_Level" required>
+            <option value="">Select</option>
+            <option>Low</option>
+            <option>Medium</option>
+            <option>High</option>
+        </select>
+    </div>-->
+
+<div class="form-full btn-row">
+    <button type="submit" class="submit-btn">Submit</button>
+    <button type="reset" class="reset-btn">Reset</button>
+</div>
+
+</form>
+
+</div>
+
+</body>
+</html>
+
+
+    <!-- Cancer Type -->
+    <!--<div class="input-group">
+        <label>Cancer Type</label>
+        <select name="Cancer_Type" required>
+            <option value="">Select Cancer Type</option>
+            <option value="Breast">Breast</option>
+            <option value="Lung">Lung</option>
+            <option value="Colon">Colon</option>
+            <option value="Skin">Skin</option>
+            <option value="Liver">Liver</option>
+        </select>
+    </div>-->
+
+    <!-- Risk Level -->
+    <!--<div class="input-group">
+        <label>Risk Level</label>
+        <select name="Risk_Level" required>
+            <option value="">Select Risk Lavel</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+        </select>
+    </div>-->

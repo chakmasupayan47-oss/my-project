@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Registration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+</head>
+<body>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <p style="color:red">{{ message }}</p>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+  <div class="navbar">
+        <form action="{{ url_for('home') }}" method="POST"><a href="/">Home</a></form>
+        <form action="{{ url_for('about') }}" method="POST"><a href="/about">About</a></form>
+    </div>
+<div class="container">
+    <h2>Registration</h2>
+
+    <form action="{{ url_for('main_page') }}" method="POST">
+
+        <div class="input-group">
+            <label>Name</label>
+            <input type="text" name="name" required>
+        </div>
+        <div class="input-group">
+            <label>Email</label>
+            <input type="email" name="email" required>
+        </div>
+
+        <div class="input-group">
+            <label>Password</label>
+            <input type="password" name="password" required>
+        </div>
+
+        <button type="submit">Register</button>
+
+    </form>
+
+    <p>Already have an account? <a href="/main">Login here</a></p>
+</div>
+
+</body>
+</html>
