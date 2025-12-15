@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row align-items-center min-vh-75">
+    <div class="col-lg-6">
+        <div class="hero-content">
+            <h1 class="display-4 fw-bold text-primary mb-4">
+                Cancer Risk Assessment
+            </h1>
+            <p class="lead mb-4">
+                Use our advanced machine learning model to assess your cancer risk based on 
+                lifestyle, genetic, and demographic factors. Get personalized insights and 
+                recommendations for preventive healthcare.
+            </p>
+            <div class="mb-5">
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li class="mb-2">✅ Age & Genetic Factors</li>
+                            <li class="mb-2">✅ Lifestyle Assessment</li>
+                            <li class="mb-2">✅ Family History Analysis</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li class="mb-2">✅ Personalized Results</li>
+                            <li class="mb-2">✅ Risk Factor Breakdown</li>
+                            <li class="mb-2">✅ Preventive Recommendations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <a href="{{ url_for('predict') }}" class="btn btn-primary btn-lg px-4 me-md-2">
+                    Start Risk Assessment
+                </a>
+                <a href="{{ url_for('about') }}" class="btn btn-outline-secondary btn-lg px-4">
+                    Learn More
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card shadow-lg">
+            <div class="card-body p-4">
+                <h3 class="card-title mb-4">How It Works</h3>
+                <div class="steps">
+                    <div class="step mb-4">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h5>Provide Information</h5>
+                            <p class="text-muted">Enter your age, lifestyle habits, family history, and other relevant factors.</p>
+                        </div>
+                    </div>
+                    <div class="step mb-4">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h5>AI Analysis</h5>
+                            <p class="text-muted">Our machine learning model analyzes your risk factors using medical research data.</p>
+                        </div>
+                    </div>
+                    <div class="step mb-4">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h5>Get Results</h5>
+                            <p class="text-muted">Receive your personalized risk assessment with detailed explanations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-12">
+        <div class="alert alert-warning">
+            <strong>Important:</strong> This tool is for educational and informational purposes only. 
+            It is not a substitute for professional medical advice, diagnosis, or treatment. 
+            Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+

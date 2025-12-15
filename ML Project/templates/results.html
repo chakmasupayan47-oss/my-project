@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% block title %}Results - {{ super() }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card shadow">
+            <div class="card-header text-white {% if prediction == 1 %}bg-danger{% else %}bg-success{% endif %}">
+                <h3 class="card-title mb-0 text-center">Risk Assessment Results</h3>
+            </div>
+            <div class="card-body p-4">
+                <!-- Risk Summary -->
+                <div class="text-center mb-4">
+                    <h2 class="{% if prediction == 1 %}text-danger{% else %}text-success{% endif %}">
+                        {% if prediction == 1 %}
+                            🚨 Increased Risk
+                        {% else %}
+                            ✅ Lower Risk
+                        {% endif %}
+                    </h2>
+                    <p class="lead">Based on your provided information</p>
+                </div>
+
+                <!-- Risk Probability -->
+                <div class="risk-meter mb-4">
+                    <h4 class="text-center mb-3">Risk Probability: {{ "%.1f"|format(probability * 100) }}%</h4>
+                    <div class="progress" style="height: 30px;">
+                        <div class="progress-bar {% if prediction == 1 %}bg-danger{% else %}bg-success{% endif %}" 
+                             style="width: {{ probability * 100 }}%">
+                            {{ "%.1f"|format(probability * 100) }}%
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between mt-2">
+                        <small>0%</small>
+                        <small>50%</small>
+                        <small>100%</small>
+                    </div>
+                </div>
+
+                <!-- Recommendations -->
+                <div class="recommendations mt-4">
+                    <h4 class="border-bottom pb-2">Recommendations</h4>
+                    {% if prediction == 1 %}
+                        <div class="alert alert-warning">
+                            <h5>🚨 Important Recommendations:</h5>
+                            <ul class="mb-0">
+                                <li>Consult with a healthcare professional for personalized medical advice</li>
+                                <li>Consider regular cancer screening based on your risk factors</li>
+                                <li>Maintain a healthy lifestyle with balanced diet and regular exercise</li>
+                                <li>Avoid tobacco and limit alcohol consumption</li>
+                                <li>Discuss genetic counseling if you have family history or genetic markers</li>
+                            </ul>
+                        </div>
+                    {% else %}
+                        <div class="alert alert-success">
+                            <h5>✅ Positive Indicators:</h5>
+                            <ul class="mb-0">
+                                <li>Your current risk factors suggest a lower probability</li>
+                                <li>Continue maintaining healthy lifestyle habits</li>
+                                <li>Stay updated with routine health check-ups</li>
+                                <li>Maintain balanced diet and physical activity</li>
+                            </ul>
+                        </div>
+                    {% endif %}
+                </div>
+
+                <!-- Factor Breakdown -->
+                <div class="factor-breakdown mt-4">
+                    <h4 class="border-bottom pb-2">Your Risk Factors</h4>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Factor</th>
+                                    <th>Your Input</th>
+                                    <th>Impact</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Age</td>
+                                    <td>{{ features.age }} years</td>
+                                    <td>{% if features.age > 50 %}High{% else %}Low{% endif %}</td>
+                                </tr>
+                                <tr>
+                                    <td>BMI</td>
+                                    <td>{{ features.bmi }}</td>
+                                    <td>{% if features.bmi > 30 %}High{% elif features.bmi > 25 %}Medium{% else %}Low{% endif %}</td>
+                                </tr>
+                                <tr>
+                                    <td>Smoking</td>
+                                    <td>
+                                        {% if features.smoking_status == 0 %}Never
+                                        {% elif features.smoking_status == 1 %}Former
+                                        {% else %}Current{% endif %}
+                                    </td>
+                                    <td>{% if features.smoking_status == 2 %}High{% elif features.smoking_status == 1 %}Medium{% else %}Low{% endif %}</td>
+                                </tr>
+                                <tr>
+                                    <td>Family History</td>
+                                    <td>
+                                        {% if features.family_history == 0 %}None
+                                        {% elif features.family_history == 1 %}Second-degree
+                                        {% else %}First-degree{% endif %}
+                                    </td>
+                                    <td>{% if features.family_history == 2 %}High{% elif features.family_history == 1 %}Medium{% else %}Low{% endif %}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="text-center mt-4">
+                    <div class="btn-group" role="group">
+                        <a href="{{ url_for('predict') }}" class="btn btn-primary">
+                            New Assessment
+                        </a>
+                        <a href="{{ url_for('home') }}" class="btn btn-outline-secondary">
+                            Back to Home
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="alert alert-warning mt-4">
+            <strong>Medical Disclaimer:</strong> This assessment is based on statistical models and 
+            available medical research. It is not a medical diagnosis. The results should be 
+            discussed with qualified healthcare professionals. Individual risk may vary based on 
+            factors not included in this assessment.
+        </div>
+    </div>
+</div>
+{% endblock %}

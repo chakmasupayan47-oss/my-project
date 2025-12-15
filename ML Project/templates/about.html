@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}About - {{ super() }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-10">
+        <div class="card shadow">
+            <div class="card-header bg-info text-white">
+                <h3 class="card-title mb-0 text-center">About Cancer Risk Prediction</h3>
+            </div>
+            <div class="card-body p-4">
+                <h4>Project Overview</h4>
+                <p class="lead">
+                    This Cancer Risk Prediction system uses advanced machine learning to assess 
+                    an individual's probability of having increased cancer risk based on various 
+                    lifestyle, genetic, and demographic factors.
+                </p>
+
+                <h5 class="mt-4">How It Works</h5>
+                <div class="row mt-3">
+                    <div class="col-md-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <div class="display-6 text-primary">📊</div>
+                                <h6>Data Collection</h6>
+                                <p class="small">Collects relevant risk factors including age, lifestyle, family history, and medical background.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <div class="display-6 text-primary">🤖</div>
+                                <h6>AI Analysis</h6>
+                                <p class="small">Uses Random Forest algorithm trained on medical research data to analyze risk patterns.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <div class="display-6 text-primary">📋</div>
+                                <h6>Risk Assessment</h6>
+                                <p class="small">Provides personalized risk assessment with detailed explanations and recommendations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h5 class="mt-5">Risk Factors Considered</h5>
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <strong>Age:</strong> Cancer risk increases with age
+                            </li>
+                            <li class="list-group-item">
+                                <strong>BMI:</strong> Higher BMI can increase certain cancer risks
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Smoking History:</strong> Major risk factor for many cancers
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Alcohol Consumption:</strong> Linked to several cancer types
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Physical Activity:</strong> Regular exercise reduces risk
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <strong>Family History:</strong> Genetic predisposition to cancer
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Genetic Markers:</strong> Inherited genetic mutations
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Previous Cancer:</strong> History of cancer increases risk
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Chronic Diseases:</strong> Underlying health conditions

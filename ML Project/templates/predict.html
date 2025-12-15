@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+
+{% block title %}Risk Assessment - {{ super() }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-10">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h3 class="card-title mb-0 text-center">Cancer Risk Assessment Form</h3>
+            </div>
+            <div class="card-body p-4">
+                {% if error %}
+                    <div class="alert alert-danger">{{ error }}</div>
+                {% endif %}
+
+                <form id="riskForm" method="POST" action="{{ url_for('predict') }}">
+                    <div class="row">
+                        <!-- Personal Information -->
+                        <div class="col-md-6">
+                            <h5 class="border-bottom pb-2 mb-3">Personal Information</h5>
+                            
+                            <div class="mb-3">
+                                <label for="age" class="form-label">Age <span class="text-danger">*</span></label>
+                                <input type="number" class="form-control" id="age" name="age" 
+                                       min="20" max="90" required>
+                                <div class="form-text">Enter your current age (20-90 years)</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="gender" class="form-label">Gender <span class="text-danger">*</span></label>
+                                <select class="form-select" id="gender" name="gender" required>
+                                    <option value="">Select...</option>
+                                    <option value="0">Female</option>
+                                    <option value="1">Male</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="bmi" class="form-label">BMI (Body Mass Index) <span class="text-danger">*</span></label>
+                                <input type="number" class="form-control" id="bmi" name="bmi" 
+                                       min="15" max="40" step="0.1" required>
+                                <div class="form-text">Normal range: 18.5-24.9 | Overweight: 25-29.9 | Obese: 30+</div>
+                            </div>
+                        </div>
+
+                        <!-- Lifestyle Factors -->
+                        <div class="col-md-6">
+                            <h5 class="border-bottom pb-2 mb-3">Lifestyle Factors</h5>
+                            
+                            <div class="mb-3">
+                                <label for="smoking_status" class="form-label">Smoking<span class="text-danger">*</span></label>
+                                <select class="form-select" id="smoking_status" name="smoking_status" required>
+                                    <option value="">Select...</option>
+                                    <option value="0">Never smoked</option>
+                                    <option value="1">Former smoker</option>
+                                    <option value="2">Current smoker</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="alcohol_consumption" class="form-label">Alcohol Use<span class="text-danger">*</span></label>
+                                <select class="form-select" id="alcohol_consumption" name="alcohol_consumption" required>
+                                    <option value="">Select...</option>
+                                    <option value="0">None</option>
+                                    <option value="1">Light (1-2 drinks/week)</option>
+                                    <option value="2">Moderate (3-7 drinks/week)</option>
+                                    <option value="3">Heavy (8+ drinks/week)</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="physical_activity" class="form-label">Physical Activity <span class="text-danger">*</span></label>
+                                <select class="form-select" id="physical_activity" name="physical_activity" required>
+                                    <option value="">Select...</option>
+                                    <option value="0">Sedentary (little to no exercise)</option>
+                                    <option value="1">Light (1-2 days/week)</option>
+                                    <option value="2">Moderate (3-4 days/week)</option>
+                                    <option value="3">Active (5+ days/week)</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="diet_quality" class="form-label">Diet Quality <span class="text-danger">*</span></label>
+                                <select class="form-select" id="diet_quality" name="diet_quality" required>
+                                    <option value="">Select...</option>
+                                    <option value="1">Poor (mostly processed foods)</option>
+                                    <option value="3">Below Average</option>
+                                    <option value="5">Average (mixed diet)</option>
+                                    <option value="7">Good (balanced diet)</option>
+                                    <option value="9">Excellent (mostly whole foods, plant-based)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <!-- Medical History -->
+                        <div class="col-md-6">
+                            <h5 class="border-bottom pb-2 mb-3">Medical History</h5>
+                            
+                            <div class="mb-3">
+                                <label for="family_history" class="form-label">Family History of Cancer <span class="text-danger">*</span></label>
+                                <select class="form-select" id="family_history" name="family_history" required>
+                                    <option value="">Select...</option>
+                                    <option value="0">No family history</option>
+                                    <option value="1">Second-degree relative (grandparent, aunt/uncle)</option>
+                                    <option value="2">First-degree relative (parent, sibling, child)</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="genetic_markers" class="form-label">Genetic Markers <span class="text-danger">*</span></label>
+                                <select class="form-select" id="genetic_markers" name="genetic_markers" required>
+                                    <option value="">Select...</option>
+                                    <option value="0">No known genetic markers</option>
+                                    <option value="1">Low-risk markers</option>
+                                    <option value="2">High-risk markers (BRCA, etc.)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <h5 class="border-bottom pb-2 mb-3">&nbsp;</h5>
+                            
+                            <div class="mb-3">
+                                <label for="previous_cancer" class="form-label">Previous Cancer Diagnosis <span class="text-danger">*</span></label>
+                                <select class="form-select" id="previous_cancer" name="previous_cancer" required>
+                                    <option value="">Select...</option>
+                                    <option value="0">No previous cancer</option>
+                                    <option value="1">Previous cancer history</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="chronic_conditions" class="form-label">Chronic Health Conditions <span class="text-danger">*</span></label>
+                                <select class="form-select" id="chronic_conditions" name="chronic_conditions" required>
+                                    <option value="">Select...</option>
+                                    <option value="0">None</option>
+                                    <option value="1">One chronic condition</option>
+                                    <option value="2">Multiple chronic conditions</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary btn-lg" id="submitBtn">
+                                    Assess My Cancer Risk
+                                </button>
+                                <button type="reset" class="btn btn-outline-secondary">
+                                    Reset Form
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="alert alert-info mt-4">
+            <strong>Privacy Note:</strong> Your data is processed securely and anonymously. 
+            No personal health information is stored on our servers.
+        </div>
+    </div>
+</div>
+{% endblock %}
